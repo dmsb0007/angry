@@ -4,7 +4,150 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anger Explosion</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body, html {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.9), rgba(0, 0, 0, 0.9));
+            overflow: hidden;
+        }
+
+        .wrapper {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            padding: 10px;
+        }
+
+        .message-container {
+            margin-bottom: 30px;
+        }
+
+        /* Glowing white text for 'I'M ANGRY!' */
+        .angry-text {
+            font-size: 6vw;
+            color: white;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px white;
+            animation: shakeText 3s ease-in-out infinite alternate, blastEffect 3s ease-out forwards, colorChangeWhite 2s infinite alternate;
+        }
+
+        /* Glowing blue text for 'Why would you do that?!' */
+        .sub-message {
+            font-size: 4vw;
+            color: #00d9ff;
+            opacity: 0;
+            animation: fadeInText 2s ease-out forwards;
+            animation-delay: 1s;
+            text-shadow: 0 0 10px #00d9ff, 0 0 20px #00d9ff, 0 0 30px #00d9ff;
+        }
+
+        @keyframes shakeText {
+            0% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(-5deg);
+            }
+            50% {
+                transform: rotate(5deg);
+            }
+            75% {
+                transform: rotate(-5deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        @keyframes blastEffect {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes colorChangeWhite {
+            0% {
+                color: #ffffff;
+            }
+            50% {
+                color: #f2f2f2;
+            }
+            100% {
+                color: #ffffff;
+            }
+        }
+
+        .explosion-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .explosion-particle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(255, 69, 0, 0.8);
+            border-radius: 50%;
+            opacity: 1;
+            animation: explode 1s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                opacity: 1;
+                transform: scale(1) translate(0, 0);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(2) translate(var(--random-x), var(--random-y));
+            }
+        }
+
+        /* Media Queries for Mobile Responsiveness */
+        @media screen and (max-width: 600px) {
+            .angry-text {
+                font-size: 10vw; /* Smaller font size for mobile screens */
+            }
+            .sub-message {
+                font-size: 6vw; /* Adjust sub-message size */
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="wrapper">
@@ -14,6 +157,34 @@
         </div>
         <div class="explosion-container"></div>
     </div>
-    <script src="script.js"></script>
+    <script>
+        window.addEventListener("load", function () {
+            const explosionContainer = document.querySelector(".explosion-container");
+
+            // Create explosion particles dynamically after page load
+            setInterval(() => {
+                explosionContainer.style.opacity = 1; // Show explosion container
+
+                // Create explosion particles
+                for (let i = 0; i < 30; i++) {
+                    const particle = document.createElement("div");
+                    particle.classList.add("explosion-particle");
+
+                    // Set random position for particles
+                    const randomX = (Math.random() - 0.5) * 300; // Random X within range
+                    const randomY = (Math.random() - 0.5) * 300; // Random Y within range
+                    particle.style.setProperty('--random-x', `${randomX}px`);
+                    particle.style.setProperty('--random-y', `${randomY}px`);
+
+                    explosionContainer.appendChild(particle);
+
+                    // Remove particles after animation ends
+                    setTimeout(() => {
+                        particle.remove();
+                    }, 1000);
+                }
+            }, 4000); // Delay between explosions to keep the effect running continuously
+        });
+    </script>
 </body>
 </html>
