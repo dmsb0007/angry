@@ -27,11 +27,11 @@ body, html {
 }
 
 .angry-text {
-    font-size: 60px;
+    font-size: 70px;
     color: #ff0f0f;
     text-transform: uppercase;
     text-shadow: 0 0 10px #ff0f0f, 0 0 20px #ff0f0f, 0 0 30px #ff0f0f, 0 0 40px #ff0f0f;
-    animation: shakeText 0.5s ease-in-out infinite alternate, colorShift 1.5s infinite alternate;
+    animation: shakeText 0.5s ease-in-out infinite alternate, blastEffect 0.5s ease-out forwards;
 }
 
 .sub-message {
@@ -42,26 +42,6 @@ body, html {
     animation-delay: 1s;
 }
 
-button.trigger-btn {
-    background-color: #ff0f0f;
-    color: white;
-    font-size: 20px;
-    padding: 20px 30px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    margin-top: 30px;
-    z-index: 3; /* Ensure the button stays above other elements */
-    position: relative; /* Makes sure the button stays in the correct stacking order */
-}
-
-button.trigger-btn:hover {
-    transform: scale(1.1);
-    background-color: #ff3300;
-}
-
-/* Animations */
 @keyframes shakeText {
     0% {
         transform: rotate(0deg);
@@ -80,15 +60,18 @@ button.trigger-btn:hover {
     }
 }
 
-@keyframes colorShift {
+@keyframes blastEffect {
     0% {
-        color: #ff0f0f;
+        transform: scale(1);
+        opacity: 1;
     }
     50% {
-        color: #ff6600;
+        transform: scale(1.5);
+        opacity: 0.8;
     }
     100% {
-        color: #ff0000;
+        transform: scale(2);
+        opacity: 0;
     }
 }
 
@@ -108,7 +91,7 @@ button.trigger-btn:hover {
     transform: translate(-50%, -50%);
     pointer-events: none;
     opacity: 0;
-    z-index: 1; /* Keep explosion behind the button */
+    z-index: 1;
 }
 
 .explosion-particle {
