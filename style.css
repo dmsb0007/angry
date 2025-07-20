@@ -29,7 +29,7 @@ body, html {
 
 .angry-text {
     font-size: 6vw;
-    color: #FFFDF4;
+    color: #fffdf4;
     text-transform: uppercase;
     text-shadow: 0 0 10px #ff0f0f, 0 0 20px #ff0f0f, 0 0 30px #ff0f0f, 0 0 40px #ff0f0f;
     animation: shakeText 0.5s ease-in-out infinite alternate, blastEffect 0.5s ease-out forwards, colorChange 2s infinite alternate;
@@ -37,7 +37,7 @@ body, html {
 
 .sub-message {
     font-size: 4vw;
-    color: #1B03A3;
+    color: #1b03a3;
     opacity: 0;
     animation: fadeInText 2s ease-out forwards;
     animation-delay: 1s;
