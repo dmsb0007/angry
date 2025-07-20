@@ -29,18 +29,19 @@ body, html {
 
 .angry-text {
     font-size: 6vw;
-    color: #fffdf4;
+    color: white;
     text-transform: uppercase;
-    text-shadow: 0 0 10px #ff0f0f, 0 0 20px #ff0f0f, 0 0 30px #ff0f0f, 0 0 40px #ff0f0f;
-    animation: shakeText 0.5s ease-in-out infinite alternate, blastEffect 0.5s ease-out forwards, colorChange 2s infinite alternate;
+    text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px white;
+    animation: shakeText 1s ease-in-out infinite alternate, blastEffect 1s ease-out forwards, colorChangeWhite 2s infinite alternate;
 }
 
 .sub-message {
     font-size: 4vw;
-    color: #1b03a3;
+    color: #00d9ff;
     opacity: 0;
     animation: fadeInText 2s ease-out forwards;
     animation-delay: 1s;
+    text-shadow: 0 0 10px #00d9ff, 0 0 20px #00d9ff, 0 0 30px #00d9ff;
 }
 
 @keyframes shakeText {
@@ -85,15 +86,15 @@ body, html {
     }
 }
 
-@keyframes colorChange {
+@keyframes colorChangeWhite {
     0% {
-        color: #ff0f0f;
+        color: #ffffff;
     }
     50% {
-        color: #ff6600;
+        color: #f2f2f2;
     }
     100% {
-        color: #ff0000;
+        color: #ffffff;
     }
 }
 
