@@ -1,19 +1,22 @@
-document.querySelector(".trigger-button").addEventListener("click", function () {
-    const explosion = document.querySelector(".explosion");
-    explosion.style.opacity = 1;
-    
-    // Create explosion effect
-    for (let i = 0; i < 10; i++) {
+document.querySelector(".trigger-btn").addEventListener("click", function () {
+    const explosionContainer = document.querySelector(".explosion-container");
+    explosionContainer.style.opacity = 1;
+    explosionContainer.innerHTML = ''; // Clear any previous particles
+
+    // Create explosion particles dynamically
+    for (let i = 0; i < 30; i++) {
         const particle = document.createElement("div");
         particle.classList.add("explosion-particle");
-        
-        // Random position
-        particle.style.top = `${Math.random() * 100}px`;
-        particle.style.left = `${Math.random() * 100}px`;
-        
-        explosion.appendChild(particle);
-        
-        // Remove particle after animation ends
+
+        // Set random position for particles
+        const randomX = (Math.random() - 0.5) * 300; // Random X within range
+        const randomY = (Math.random() - 0.5) * 300; // Random Y within range
+        particle.style.setProperty('--random-x', `${randomX}px`);
+        particle.style.setProperty('--random-y', `${randomY}px`);
+
+        explosionContainer.appendChild(particle);
+
+        // Remove particles after animation ends
         setTimeout(() => {
             particle.remove();
         }, 1000);
