@@ -2,7 +2,7 @@ window.addEventListener("load", function () {
     const explosionContainer = document.querySelector(".explosion-container");
 
     // Create explosion particles dynamically after page load
-    setTimeout(() => {
+    setInterval(() => {
         explosionContainer.style.opacity = 1; // Show explosion container
 
         // Create explosion particles
@@ -23,5 +23,5 @@ window.addEventListener("load", function () {
                 particle.remove();
             }, 1000);
         }
-    }, 1000); // Delay the explosion to let text animation start first
+    }, 4000); // Delay between explosions to keep the effect running continuously
 });
