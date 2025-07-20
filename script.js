@@ -1,7 +1,9 @@
 document.querySelector(".trigger-btn").addEventListener("click", function () {
     const explosionContainer = document.querySelector(".explosion-container");
-    explosionContainer.style.opacity = 1;
-    explosionContainer.innerHTML = ''; // Clear any previous particles
+    explosionContainer.style.opacity = 1; // Show explosion container
+
+    // Clear previous explosion particles
+    explosionContainer.innerHTML = '';
 
     // Create explosion particles dynamically
     for (let i = 0; i < 30; i++) {
